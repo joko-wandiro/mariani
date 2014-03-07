@@ -1,0 +1,26 @@
+/* Start Sidebar Tab Style */
+.widget .wc-shortcodes-tabs ul.ui-tabs-nav li a {
+padding: 8px;
+border: none;
+text-decoration: none;
+}
+.wc-shortcodes-tabs ul.ui-tabs-nav {
+display: block;
+margin: 0;
+padding: 0;
+border-bottom: none;
+}
+.wc-shortcodes-tabs .tab-content {
+background: rgba(0, 0, 0, 0);
+padding: 8px 0px;
+border: none;
+}
+.widget .wc-shortcodes-tabs ul.ui-tabs-nav li a:hover, .widget .wc-shortcodes-tabs ul.ui-tabs-nav li a:focus {
+color: #F8F8F8;
+}
+.wc-shortcodes-tabs ul.ui-tabs-nav .ui-state-active a, .widget .wc-shortcodes-tabs ul.ui-tabs-nav li a:hover, .widget .wc-shortcodes-tabs ul.ui-tabs-nav li a:focus {
+color: #F8F8F8;
+border: none;
+background-color: #25292B;
+}
+/* End Sidebar Tab Style */

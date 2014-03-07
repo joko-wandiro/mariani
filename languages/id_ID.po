@@ -1,0 +1,274 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Mariani\n"
+"POT-Creation-Date: 2014-03-01 10:38+0700\n"
+"PO-Revision-Date: 2014-03-03 11:10+0700\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: id\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.4\n"
+"X-Poedit-KeywordsList: __;_e;esc_attr__;esc_attr_e;esc_html__;esc_html_e;_x;"
+"_ex;esc_attr_x;esc_html_x;_n;_nx;_n_noop;_nx_noop\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ../.\n"
+
+#: .././404.php:24 .././header.php:27
+#, php-format
+msgid "Page %s"
+msgstr "Halaman %s"
+
+#: .././404.php:49
+msgid "Sorry, the page you’re looking for doesn’t exists."
+msgstr "Maaf, halaman yang anda cari tidak ada."
+
+#: .././404.php:52
+msgid "Go Back to"
+msgstr "Pergi Kembali ke"
+
+#: .././404.php:54 .././404.php:55
+msgid "Home Page"
+msgstr "Halaman Utama"
+
+#: .././archive.php:15
+msgid "All entries in "
+msgstr "Semua data masukan dalam"
+
+#: .././archive.php:31 .././index.php:29 .././page-contact.php:34
+#: .././page.php:29 .././page.php:47 .././search.php:31 .././single.php:29
+#: .././single.php:47
+msgid ", "
+msgstr ","
+
+#: .././archive.php:33 .././index.php:31 .././page-contact.php:36
+#: .././page.php:31 .././search.php:33 .././single.php:31
+#, php-format
+msgid "in %s"
+msgstr "dalam %s"
+
+#: .././archive.php:39 .././index.php:37 .././page.php:37 .././search.php:39
+#: .././single.php:37
+#, php-format
+msgid "by %1$s on %2$s %3$s with %4$s"
+msgstr "Oleh %1$s pada %2$s %3$s dengan %4$s"
+
+#: .././archive.php:52 .././index.php:50 .././search.php:52
+msgid "Read More"
+msgstr "Baca Lebih Lanjut"
+
+#: .././archive.php:62 .././index.php:60 .././search.php:62
+msgid "Older Entries"
+msgstr "Data Yang Lebih Lama"
+
+#: .././archive.php:63 .././index.php:61 .././search.php:63
+msgid "Newer Entries"
+msgstr "Data Yang Lebih Baru"
+
+#: .././archive.php:77 .././index.php:75 .././page-contact.php:50
+#: .././page.php:69 .././search.php:77 .././single.php:69
+msgid "No posts were found. Sorry!"
+msgstr "Tidak ada post yang ditemukan. Maaf!"
+
+#: .././comments.php:14
+msgid "Comments"
+msgstr "Komentar-komentar"
+
+#: .././comments.php:27
+msgid "Comment navigation"
+msgstr "Navigasi Komentar"
+
+#: .././comments.php:28
+msgid "&larr; Older Comments"
+msgstr "&larr; Komentar Yang Lebih Lama"
+
+#: .././comments.php:29
+msgid "Newer Comments &rarr;"
+msgstr "Komentar Lebih Baru &rarr;"
+
+#: .././comments.php:38
+msgid "Comments are closed."
+msgstr "Komentar ditutup."
+
+#: .././comments.php:50
+msgid "Leave a Comment"
+msgstr "Tinggalkan Komentar"
+
+#: .././comments.php:51
+#, php-format
+msgid "Leave a Reply to %s"
+msgstr "Tinggalkan Balasan ke %s"
+
+#: .././comments.php:52
+msgid "Cancel Reply"
+msgstr "Batalkan Balasan"
+
+#: .././comments.php:53
+msgid "Post Comment"
+msgstr "Pasang Komentar"
+
+#: .././comments.php:56
+msgid "Comment"
+msgstr "Komentar"
+
+#: .././comments.php:63
+#, php-format
+msgid "You must be <a href=\"%s\">logged in</a> to post a comment."
+msgstr "Kau harus <a href=\"%s\"></a> untuk memasang komentar."
+
+#: .././comments.php:68
+#, php-format
+msgid ""
+"Logged in as <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log out of "
+"this account\">Log out?</a>"
+msgstr ""
+"Logged in sebagai <a href=\"%1$s\">%2$s</a>. <a href=\"%3$s\" title=\"Log "
+"out of this account\">Log out?</a>Logged in as <a href=\"%1$s\">%2$s</a>. <a "
+"href=\"%3$s\" title=\"Log out of this account\">Log out?</a>"
+
+#: .././comments.php:78
+msgid "Name"
+msgstr "Nama"
+
+#: .././comments.php:86
+msgid "Email"
+msgstr "Email"
+
+#: .././comments.php:94
+msgid "Website"
+msgstr "Website"
+
+#: .././functions.php:114
+msgid "Primary Navigation"
+msgstr "Navigasi Utama"
+
+#: .././functions.php:115
+msgid "Secondary Navigation"
+msgstr "Navigasi Kedua"
+
+#: .././functions.php:122
+msgid "Primary Sidebar"
+msgstr "Sidebar Utama"
+
+#: .././functions.php:124
+msgid "The Primary Widget Area"
+msgstr "Area Widget Utama"
+
+#: .././functions.php:131
+msgid "Secondary Sidebar"
+msgstr "Sidebar Kedua"
+
+#: .././functions.php:133
+msgid "The Secondary Widget Area"
+msgstr "Area Widget Kedua"
+
+#: .././functions.php:276
+msgid "Your comment is awaiting moderation."
+msgstr "Komentar-mu menunggu moderasi."
+
+#: .././functions.php:284
+#, php-format
+msgid "%1$s at %2$s"
+msgstr "%1$s pada  %2$s"
+
+#: .././functions.php:285
+msgid "(Edit)"
+msgstr "(Sunting)"
+
+#: .././header.php:56 .././header.php:66
+msgid "Phantasmacode"
+msgstr "Phantasmacode"
+
+#: .././page.php:52 .././single.php:52
+#, php-format
+msgid "<span class=\"%1$s\">tagged</span> %2$s"
+msgstr "<span class=\"%1$s\">Label</span> %2$s"
+
+#: .././search.php:15
+#, php-format
+msgid "Search Results for: %s"
+msgstr "Hasil Pencarian untuk: %s"
+
+#: .././searchform.php:2
+msgid "Search.."
+msgstr "Cari.. "
+
+#: .././widget-advanced-post.php:11
+msgid "The most recent posts on your site"
+msgstr "Tulisan paling baru pada situs Anda"
+
+#: .././widget-advanced-post.php:12
+msgid "Advanced Posts"
+msgstr "Tulisan Lanjutan"
+
+#: .././widget-advanced-post.php:37
+msgid "Recent Posts"
+msgstr "Tulisan Terkini"
+
+#: .././widget-advanced-post.php:109 .././widget-advanced-post.php:128
+msgid "Title:"
+msgstr "Judul:"
+
+#: .././widget-advanced-post.php:134
+msgid "Number of posts to show:"
+msgstr "Jumlah tulisan untuk ditampilkan:"
+
+#: .././pages/phc_widget_social_media.php:9
+msgid "Display Social Media"
+msgstr "Tampilkan Social Media"
+
+#: .././pages/phc_widget_social_media.php:11
+msgid "PHC Widget Social Media"
+msgstr "PHC Widget Social Media"
+
+#: .././pages/theme-options.php:5
+msgid "Theme Options"
+msgstr "Theme Options"
+
+#: .././pages/theme-options.php:42
+msgid "General"
+msgstr "Umum"
+
+#: .././pages/theme-options.php:43
+msgid "Social Media"
+msgstr "Social Media"
+
+#: .././pages/theme-options.php:44
+msgid "Google Analytics"
+msgstr "Google Analytics"
+
+#: .././pages/theme-options.php:57
+msgid "No Image"
+msgstr "Tidak Ada Gambar"
+
+#: .././pages/theme-options.php:65
+msgid "Select Image"
+msgstr "Pilih Gambar"
+
+#: .././pages/theme-options.php:73
+msgid "RSS"
+msgstr "RSS"
+
+#: .././pages/theme-options.php:84 .././pages/theme-options.php:103
+#: .././pages/theme-options.php:122
+msgid "Show"
+msgstr "Tampilkan"
+
+#: .././pages/theme-options.php:90
+msgid "Facebook"
+msgstr "Facebook"
+
+#: .././pages/theme-options.php:109
+msgid "Twitter"
+msgstr "Twitter"
+
+#: .././pages/theme-options.php:132
+msgid "Google Analytics Code"
+msgstr "Google Analytics Code"
+
+#: .././pages/theme-options.php:143
+msgid "Save"
+msgstr "Simpan"
