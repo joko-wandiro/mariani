@@ -1,6 +1,6 @@
 # Wordpress Theme - Mariani
 
-Camera Slideshow is Responsive Theme for Blog ( Profile, Business and Corporate ).
+Mariani Theme is Responsive Theme for Blog ( Profile, Business and Corporate ).
 
 How to Install it to your Wordpress Site:
 * Extract zip Package.
