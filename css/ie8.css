@@ -1,0 +1,29 @@
+.top.navbar {
+background: url("../img/gradient-background.png") repeat-x #EA1C26;
+filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#ea1c24, endColorstr=#a61419);
+-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#ea1c24, endColorstr=#a61419)";
+}
+a.wsl_connect_with_provider[data-provider="Twitter"] {
+background: url('../img/social-hover.png') no-repeat center;
+}
+a.wsl_connect_with_provider[data-provider="Twitter"]:hover {
+background: url('../img/social.png') no-repeat center;
+}
+a.wsl_connect_with_provider[data-provider="LinkedIn"] {
+background: url('../img/social-hover.png') no-repeat -75px;
+}
+a.wsl_connect_with_provider[data-provider="LinkedIn"]:hover {
+background: url('../img/social.png') no-repeat -75px;
+}
+.top.navbar .dropdown-menu {
+-webkit-box-shadow: none;
+-moz-box-shadow: none;
+box-shadow: none;
+}
+.navbar-inner {
+    background: none;
+    border: 0;
+    box-shadow: none;
+    font-size: 1.3em;
+	margin-bottom: 50px;
+}
