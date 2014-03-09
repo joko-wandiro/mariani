@@ -54,9 +54,17 @@
 				</div>
 				<?php 
 					}// End if $tags_list 
-				} // End if is_object_in_taxonomy( get_post_type(), 'post_tag' ) 
+				} // End if is_object_in_taxonomy( get_post_type(), 'post_tag' )
 				?>						
 				<?php comments_template( '', true ); ?>
+				<?php
+			wp_link_pages( array(
+				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
+				'after'       => '</div>',
+				'link_before' => '<span>',
+				'link_after'  => '</span>',
+			) );				
+				?>
 				</div>
 			<?php
 				$ct++;

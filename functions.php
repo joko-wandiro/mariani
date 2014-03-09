@@ -35,6 +35,10 @@ function theme_enqueue_scripts_404() {
 	if( is_404() ){
 		wp_enqueue_style('page_not_found_css', PHANTASMACODE_CSS_PATH.'page-not-found.css', FALSE);
 	}
+	
+	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ){
+		wp_enqueue_script( 'comment-reply' );
+	}
 }
 
 add_action("init", "theme_enqueue_scripts");
@@ -104,6 +108,7 @@ function phantasmacode_theme_excerpt_more($more) {
 	return '...';
 }
 
+add_theme_support( 'automatic-feed-links' );
 add_theme_support('nav-menus');
 // Register Nav Menus
 if( function_exists('register_nav_menus') ){
@@ -384,6 +389,39 @@ function mariani_setup(){
 	load_theme_textdomain(PHANTASMACODE_THEME, 
 	get_template_directory() . '/languages');
 }
+
+function mariani_body_class( $classes ) {
+	$background_color = get_background_color();
+	$background_image = get_background_image();
+
+	if ( ! is_active_sidebar( 'sidebar-1' ) || is_page_template( 'page-templates/full-width.php' ) )
+		$classes[] = 'full-width';
+
+	if ( is_page_template( 'page-templates/front-page.php' ) ) {
+		$classes[] = 'template-front-page';
+		if ( has_post_thumbnail() )
+			$classes[] = 'has-post-thumbnail';
+		if ( is_active_sidebar( 'sidebar-2' ) && is_active_sidebar( 'sidebar-3' ) )
+			$classes[] = 'two-sidebars';
+	}
+
+	if ( empty( $background_image ) ) {
+		if ( empty( $background_color ) )
+			$classes[] = 'custom-background-empty';
+		elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
+			$classes[] = 'custom-background-white';
+	}
+
+	// Enable custom font class only if the font CSS is queued to load.
+	if ( wp_style_is( 'twentytwelve-fonts', 'queue' ) )
+		$classes[] = 'custom-font-enabled';
+
+	if ( ! is_multi_author() )
+		$classes[] = 'single-author';
+
+	return $classes;
+}
+add_filter( 'body_class', 'mariani_body_class' );
 
 require_once('pages/theme-options.php');
 require_once('pages/phc_widget_social_media.php');

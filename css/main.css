@@ -767,4 +767,6 @@ font-size: 0.75em;
 }
 }
 /* End Tablet Style */
-
+/* WP Required Style */
+.wp-caption, .wp-caption-text, .sticky, .gallery-caption, .bypostauthor, 
+.alignright, .alignleft, .aligncenter {}

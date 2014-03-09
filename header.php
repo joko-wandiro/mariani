@@ -2,7 +2,7 @@
 $phantasmacode_theme_settings_vars= get_option('phantasmacode_theme_settings_vars');
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html <?php language_attributes(); ?>
 <head>
 <meta charset="utf-8">
 <title>
@@ -45,7 +45,11 @@ if ( $paged >= 2 || $page >= 2 )
 <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="<?php echo IMAGES; ?>favicon.png">
 </head>
-<body>
+<body <?php body_class( $class ); ?>>
+<?php
+if ( ! isset( $content_width ) ) $content_width = 900;
+#wp_link_pages();
+?>
 <!-- Start Header Section -->
 <div class="full-block black border-bottom">
 <div class="container" id="header">
