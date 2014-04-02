@@ -9,29 +9,8 @@ define('PHANTASMACODE_IMAGES_BANNER', PHANTASMACODE_IMAGES . "banner/");
 define('PHANTASMACODE_THEME', "phantasmacode-theme");
 define('PHANTASMACODE_THEME_IDENTIFIER', "mariani");
 
-
-//add_action('wp', 'phantasmacode_insert_article');
-function phantasmacode_insert_article() {
-    global $post;
-	$post_array= $post->to_array();
-	$post_custom= get_post_custom($post_array['ID']);
-	for( $i=2; $i<=25; $i++ ){
-		unset($post_array['ID']);
-		// Insert Sample Data for Article
-//		$post_array['post_title']= "Article Title" . $i;
-//		$post_array['post_content']= "Content Testing Article " . $i;
-		// Insert Sample Data for Stuff
-		$post_array['post_title']= "Article " . $i;
-		$post_array['post_content']= "Content Article " . $i;
-		$res= wp_insert_post($post_array);
-		foreach( $post_custom as $custom_key=>$custom_value ){
-			add_post_meta($res, $custom_key, $custom_value[0], TRUE);
-		}
-	}
-}
-
-add_action('wp', 'theme_enqueue_scripts_404');
-function theme_enqueue_scripts_404() {
+add_action('wp', 'phc_mariani_theme_enqueue_scripts_404');
+function phc_mariani_theme_enqueue_scripts_404() {
 	if( is_404() ){
 		wp_enqueue_style('page_not_found_css', PHANTASMACODE_CSS_PATH.'page-not-found.css', FALSE);
 	}
@@ -41,8 +20,8 @@ function theme_enqueue_scripts_404() {
 	}
 }
 
-add_action("init", "theme_enqueue_scripts");
-function theme_enqueue_scripts(){
+add_action("init", "phc_mariani_theme_enqueue_scripts");
+function phc_mariani_theme_enqueue_scripts(){
 	global $pagenow, $wp_scripts;
 	
 	if( ! is_admin() && ! in_array($pagenow, array('wp-login.php', 'wp-register.php')) ){ // FrontEnd Site
@@ -59,21 +38,15 @@ function theme_enqueue_scripts(){
 	}
 }
 
-// Add Support for Featured Images 
-if( function_exists('add_theme_support') ){
-	add_theme_support('post-thumbnails');
-	add_image_size('stuff_thumbnail', 220, 220, TRUE);
-}
-
 // Add Extra Query Vars for Project Page
-add_filter('query_vars', 'add_extra_vars');
-function add_extra_vars($public_query_vars) {
+add_filter('query_vars', 'phc_mariani_add_extra_vars');
+function phc_mariani_add_extra_vars($public_query_vars) {
 	$public_query_vars[] = 'replytocom';
 	return $public_query_vars;
 }
 
-add_filter('cancel_comment_reply_link', 'custom_cancel_comment_reply_link', 10, 3);
-function custom_cancel_comment_reply_link($arg1, $arg2, $arg3) {
+add_filter('cancel_comment_reply_link', 'phc_mariani_custom_cancel_comment_reply_link', 10, 3);
+function phc_mariani_custom_cancel_comment_reply_link($arg1, $arg2, $arg3) {
 	$replytocom= get_query_var('replytocom');
 	if( ! empty($replytocom) ){
 		return '<a rel="nofollow" id="cancel-comment-reply-link" class="btn" href="' . $arg2 . '">Cancel</a>';
@@ -82,8 +55,8 @@ function custom_cancel_comment_reply_link($arg1, $arg2, $arg3) {
 }
 
 // Set Post Per Page
-add_action('pre_get_posts', 'phantasmacode_theme_pre_get_posts', 10, 1);
-function phantasmacode_theme_pre_get_posts($query){
+add_action('pre_get_posts', 'phc_mariani_pre_get_posts', 10, 1);
+function phc_mariani_pre_get_posts($query){
 	global $pagename, $post;
     if ( ! is_admin() ){
 		$post_type= isset($query->query['post_type']) ? $query->query['post_type'] : "";
@@ -97,52 +70,20 @@ function phantasmacode_theme_pre_get_posts($query){
 }
 
 // Set Excerpt Length
-add_filter('excerpt_length', 'custom_excerpt_length', 999);
-function custom_excerpt_length( $length ) {
+add_filter('excerpt_length', 'phc_mariani_custom_excerpt_length', 999);
+function phc_mariani_custom_excerpt_length( $length ) {
 	return 25;
 }
 
 // Set Excerpt More
-add_filter('excerpt_more', 'phantasmacode_theme_excerpt_more', 10);
-function phantasmacode_theme_excerpt_more($more) {
+add_filter('excerpt_more', 'phc_mariani_excerpt_more', 10);
+function phc_mariani_excerpt_more($more) {
 	return '...';
 }
 
-add_theme_support( 'automatic-feed-links' );
-add_theme_support('nav-menus');
-// Register Nav Menus
-if( function_exists('register_nav_menus') ){
-	register_nav_menus(array(
-	'primary'=>__('Primary Navigation', PHANTASMACODE_THEME),
-	'secondary'=>__('Secondary Navigation', PHANTASMACODE_THEME),
-	));
-}
-
-// Register Sidebar
-if( function_exists('register_sidebar') ){
-	register_sidebar(array(
-		'name'=>__('Primary Sidebar', PHANTASMACODE_THEME),
-		'id'=>'primary-widget-area',
-		'description'=>__('The Primary Widget Area', 'dir'),
-		'before_widget'=>'<div class="widget">',
-		'after_widget'=>'</div>',
-		'before_title'=>'<h3 class="title-widget">',
-		'after_title'=>'</h3>'
-	));
-	register_sidebar(array(
-		'name'=>__('Secondary Sidebar', PHANTASMACODE_THEME),
-		'id'=>'secondary-widget-area',
-		'description'=>__('The Secondary Widget Area', 'dir'),
-		'before_widget'=>'<div class="widget">',
-		'after_widget'=>'</div>',
-		'before_title'=>'<h3 class="title-widget">',
-		'after_title'=>'</h3>'
-	));	
-}
-		
 // Start Override Menu
-add_filter( 'wp_nav_menu_objects', 'add_menu_parent_class' );
-function add_menu_parent_class($items){
+add_filter( 'wp_nav_menu_objects', 'phc_mariani_add_menu_parent_class' );
+function phc_mariani_add_menu_parent_class($items){
 	$parents = array();
 	foreach ( $items as $item ) {
 		if ( $item->menu_item_parent && $item->menu_item_parent > 0 ) {
@@ -160,7 +101,7 @@ function add_menu_parent_class($items){
 	return $items;
 }
 
-class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
+class PHC_Mariani_Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
 	// add classes to ul sub-menus
 	function start_lvl( &$output, $depth ) {
 		// depth dependent classes
@@ -211,7 +152,7 @@ class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
 // End Override Menu
 
 // Pagination Bootstrap - Support structure Bootstrap
-function bootstrap_pagination($pagination=array()){
+function phc_mariani_bootstrap_pagination($pagination=array()){
 	if( !empty($pagination) ){
 ?>
 	<div class="pagination">
@@ -250,7 +191,7 @@ function bootstrap_pagination($pagination=array()){
 	}
 }
 
-function phantasmacode_comment($comment, $args, $depth) {
+function phc_mariani_phantasmacode_comment($comment, $args, $depth) {
 		$GLOBALS['comment'] = $comment;
 		extract($args, EXTR_SKIP);
 
@@ -302,7 +243,7 @@ function phantasmacode_comment($comment, $args, $depth) {
 <?php
         }
 		
-function bootstrap_archive_news_pagination($pagination=array()){
+function phc_mariani_bootstrap_archive_news_pagination($pagination=array()){
 	if( !empty($pagination) ){
 ?>
 	<div class="pagination">
@@ -329,12 +270,6 @@ function bootstrap_archive_news_pagination($pagination=array()){
 	}
 }
 
-// Filter the "Thank you" text displayed in the admin footer.
-add_filter( 'admin_footer_text', 'wpse_edit_text', 11 );
-function wpse_edit_text($content) {
-    return "Developed by <a href='http://www.phantasmacode.com/'>www.phantasmacode.com</a>";
-}
-
 // MultiPostThumbnails
 if (class_exists('MultiPostThumbnails')) {
 	new MultiPostThumbnails(
@@ -346,12 +281,9 @@ if (class_exists('MultiPostThumbnails')) {
 	);
 }
 
-// Support Shortcode on Widget Text
-add_filter('widget_text', 'do_shortcode');
-
 //WP_Widget_Recent_Posts
-add_action('init', 'phantasmacode_rewrite');
-function phantasmacode_rewrite() {
+add_action('init', 'phc_mariani_phantasmacode_rewrite');
+function phc_mariani_phantasmacode_rewrite() {
     global $wp_rewrite;
     $wp_rewrite->flush_rules();
 }
@@ -372,8 +304,8 @@ function wpcf7_form_class_attr($class){
 	return $class . " form-horizontal";
 }
 
-add_filter( 'locale', 'mariani_theme_localized' );
-function mariani_theme_localized( $locale )
+add_filter( 'locale', 'phc_mariani_localized' );
+function phc_mariani_localized( $locale )
 {
 	if ( isset( $_GET['lang'] ) )
 	{
@@ -384,45 +316,59 @@ function mariani_theme_localized( $locale )
 	return $locale;
 }
 
-add_action('after_setup_theme', 'mariani_setup');
-function mariani_setup(){
+add_action('after_setup_theme', 'phc_mariani_setup');
+function phc_mariani_setup(){
 	load_theme_textdomain(PHANTASMACODE_THEME, 
 	get_template_directory() . '/languages');
+	
+	// Add Support for Featured Images 
+	add_theme_support('post-thumbnails');
+	add_image_size('stuff_thumbnail', 220, 220, TRUE);
+	
+	add_theme_support( 'automatic-feed-links' );
+	add_theme_support('nav-menus');
+	// Register Nav Menus
+	if( function_exists('register_nav_menus') ){
+		register_nav_menus(array(
+		'primary'=>__('Primary Navigation', PHANTASMACODE_THEME),
+		'secondary'=>__('Secondary Navigation', PHANTASMACODE_THEME),
+		));
+	}
 }
 
-function mariani_body_class( $classes ) {
-	$background_color = get_background_color();
-	$background_image = get_background_image();
-
-	if ( ! is_active_sidebar( 'sidebar-1' ) || is_page_template( 'page-templates/full-width.php' ) )
-		$classes[] = 'full-width';
-
-	if ( is_page_template( 'page-templates/front-page.php' ) ) {
-		$classes[] = 'template-front-page';
-		if ( has_post_thumbnail() )
-			$classes[] = 'has-post-thumbnail';
-		if ( is_active_sidebar( 'sidebar-2' ) && is_active_sidebar( 'sidebar-3' ) )
-			$classes[] = 'two-sidebars';
+function phc_mariani_widgets_init(){
+	// Register Sidebar
+	if( function_exists('register_sidebar') ){
+		register_sidebar(array(
+			'name'=>__('Primary Sidebar', PHANTASMACODE_THEME),
+			'id'=>'primary-widget-area',
+			'description'=>__('The Primary Widget Area', 'dir'),
+			'before_widget'=>'<div class="widget">',
+			'after_widget'=>'</div>',
+			'before_title'=>'<h3 class="title-widget">',
+			'after_title'=>'</h3>'
+		));
+		register_sidebar(array(
+			'name'=>__('Secondary Sidebar', PHANTASMACODE_THEME),
+			'id'=>'secondary-widget-area',
+			'description'=>__('The Secondary Widget Area', 'dir'),
+			'before_widget'=>'<div class="widget">',
+			'after_widget'=>'</div>',
+			'before_title'=>'<h3 class="title-widget">',
+			'after_title'=>'</h3>'
+		));
 	}
+}
+add_action( 'widgets_init', 'phc_mariani_widgets_init' );
 
-	if ( empty( $background_image ) ) {
-		if ( empty( $background_color ) )
-			$classes[] = 'custom-background-empty';
-		elseif ( in_array( $background_color, array( 'fff', 'ffffff' ) ) )
-			$classes[] = 'custom-background-white';
-	}
-
-	// Enable custom font class only if the font CSS is queued to load.
-	if ( wp_style_is( 'twentytwelve-fonts', 'queue' ) )
-		$classes[] = 'custom-font-enabled';
-
+function phc_mariani_body_class( $classes ) {
 	if ( ! is_multi_author() )
 		$classes[] = 'single-author';
 
 	return $classes;
 }
-add_filter( 'body_class', 'mariani_body_class' );
+add_filter( 'body_class', 'phc_mariani_body_class' );
 
 require_once('pages/theme-options.php');
-require_once('pages/phc_widget_social_media.php');
+require_once('pages/phc-widget-social-media.php');
 ?>

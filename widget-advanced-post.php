@@ -4,7 +4,7 @@
  *
  * @since 1.0.0
  */
-class WP_Widget_Advanced_Post extends WP_Widget {
+class PHC_Mariani_WP_Widget_Advanced_Post extends WP_Widget {
 
 	function __construct() {
 		$widget_ops = array('classname' => 'widget_advanced_entries', 'description' => 
@@ -140,9 +140,9 @@ class WP_Widget_Advanced_Post extends WP_Widget {
 	}
 }
 
-function advanced_post_register_widgets() {
-	register_widget('WP_Widget_Advanced_Post');
+function phc_mariani_advanced_post_register_widgets() {
+	register_widget('PHC_Mariani_WP_Widget_Advanced_Post');
 }
 
-add_action('widgets_init', 'advanced_post_register_widgets');
+add_action('widgets_init', 'phc_mariani_advanced_post_register_widgets');
 ?>

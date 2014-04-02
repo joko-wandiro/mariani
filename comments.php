@@ -18,7 +18,7 @@ if ( post_password_required() )
 			<?php #wp_list_comments(array('style'=>'ol')); ?>
 			<?php 
 			
-			wp_list_comments(array('style'=>'ol', 'callback'=>'phantasmacode_comment', 'avatar_size'=>64)); 
+			wp_list_comments(array('style'=>'ol', 'callback'=>'phc_mariani_phantasmacode_comment', 'avatar_size'=>64)); 
 			?>
 		</ol><!-- .commentlist -->
 
